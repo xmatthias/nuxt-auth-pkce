@@ -37,6 +37,8 @@ export const user = ref<User | null>(null)
 const isAuthenticated = ref(false)
 const initialized = ref(false)
 let msalInstance: PublicClientApplication
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let tokenExpirationTimer: any
 let credentials: AuthenticationResult | null = null
 
