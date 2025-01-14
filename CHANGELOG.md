@@ -1,0 +1,32 @@
+# Changelog
+
+
+## v0.8.1
+
+
+### 🚀 Enhancements
+
+- Add autologin functionality ([8a55140](https://github.com/xmatthias/nuxt-auth-pkce/commit/8a55140))
+
+### 🩹 Fixes
+
+- Improve fix and simplify user object ([44cb692](https://github.com/xmatthias/nuxt-auth-pkce/commit/44cb692))
+
+### 📖 Documentation
+
+- Add sample to the docs ([431ac6e](https://github.com/xmatthias/nuxt-auth-pkce/commit/431ac6e))
+
+### 🏡 Chore
+
+- Skip "unexpected any" ([643ba07](https://github.com/xmatthias/nuxt-auth-pkce/commit/643ba07))
+- Add typecheck script ([b4339db](https://github.com/xmatthias/nuxt-auth-pkce/commit/b4339db))
+- Fix type error ([b14de37](https://github.com/xmatthias/nuxt-auth-pkce/commit/b14de37))
+- Explicitly require defu ([19d3f8e](https://github.com/xmatthias/nuxt-auth-pkce/commit/19d3f8e))
+- Downgrade pnpm to 9.15.2 ([3b2b5f8](https://github.com/xmatthias/nuxt-auth-pkce/commit/3b2b5f8))
+- Simplify module options setup ([ece6b27](https://github.com/xmatthias/nuxt-auth-pkce/commit/ece6b27))
+- Remove unused variable ([5b84e79](https://github.com/xmatthias/nuxt-auth-pkce/commit/5b84e79))
+
+### ❤️ Contributors
+
+- Matthias ([@xmatthias](http://github.com/xmatthias))
+
