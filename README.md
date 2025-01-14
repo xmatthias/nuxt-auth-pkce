@@ -51,6 +51,18 @@ NUXT_PUBLIC_AUTH_PKCE_TENANT_ID="your-tenant-id"
 ```
 
 
+5. Use the `AuthGate` component in your application
+
+``` vue
+<template>
+  <AuthGate auto-login>
+    <div>
+      <h1>My secret content</h1>
+    </div>
+  </AuthGate>
+</template>
+```
+
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
 <!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/nuxt-auth-pkce?file=playground%2Fapp.vue) -->
