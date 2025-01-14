@@ -1,5 +1,4 @@
 import { defineNuxtModule, addPlugin, createResolver, addImports, addComponentsDir } from '@nuxt/kit'
-import { defu } from 'defu'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
@@ -34,9 +33,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
     addPlugin(resolver.resolve('./runtime/plugin'))
 
-    _nuxt.options.runtimeConfig.public = defu(_nuxt.options.runtimeConfig.public,
-      _options.public,
-    )
+    _nuxt.options.runtimeConfig.public.authPkce = _options.public
 
     addImports({ name: 'useAuth', from: resolver.resolve('./runtime/composables/auth') })
 
