@@ -104,10 +104,9 @@ export function useAuth() {
     const account = accounts[0]
     user.value = {
       access_token: credentials?.accessToken ?? '',
-      username: account.name ?? '',
-      email: account.username,
-      first_name: account.name ?? '',
-      last_name: account.username,
+      username: account.username ?? '',
+      name: account.name ?? '',
+      roles: account.idTokenClaims?.roles || [],
     }
     isAuthenticated.value = true
   }

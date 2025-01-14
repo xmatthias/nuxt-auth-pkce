@@ -7,8 +7,9 @@ const { signIn, user } = useAuth()
     <div>
       <h1>Authenticated Route</h1>
       <b>Username: {{ user?.username }}</b>
-      <p>Email: {{ user?.email }}</p>
-      <p>Name: {{ user?.first_name }}</p>
+      <p>Name: {{ user?.name }}</p>
+      <p>Roles: {{ user?.roles }}</p>
+
       <pre>{{ user }}</pre>
       <hr>
     </div>
