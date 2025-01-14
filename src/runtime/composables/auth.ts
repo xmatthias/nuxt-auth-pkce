@@ -34,7 +34,7 @@ class CustomNavigationClient extends NavigationClient {
 }
 
 export const user = ref<User | null>(null)
-const isAuthenticated = ref(false)
+const isAuthenticated = ref<boolean | null>(null)
 const initialized = ref(false)
 let msalInstance: PublicClientApplication
 
@@ -117,6 +117,9 @@ export function useAuth() {
     if (isAuthenticated_) {
       // console.log('Authenticated')
       await setUser()
+    }
+    else {
+      isAuthenticated.value = false
     }
   }
 

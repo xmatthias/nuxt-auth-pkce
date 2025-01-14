@@ -1,7 +1,24 @@
 <script lang="ts" setup>
 import { useAuth } from '../composables/auth'
 
+const props = withDefaults(defineProps<
+  {
+    autoLogin?: boolean
+  }
+>(), {
+  // default props
+  autoLogin: false,
+})
+
 const { isAuthenticated, signIn } = useAuth()
+
+watch(isAuthenticated, (value) => {
+  if (props.autoLogin) {
+    if (value === false) {
+      signIn()
+    }
+  }
+}, { immediate: true })
 </script>
 
 <template>
