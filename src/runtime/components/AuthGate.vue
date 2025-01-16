@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { watch } from 'vue'
 import { useAuth } from '../composables/auth'
 
 const props = withDefaults(defineProps<
