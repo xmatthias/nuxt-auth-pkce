@@ -44,7 +44,8 @@ let credentials: AuthenticationResult | null = null
 
 export function useAuth() {
   const router = useRouter()
-  const authConfig: ModuleOptions['public'] = useRuntimeConfig().public.authPkce as ModuleOptions['public']
+  const moduleConfig: ModuleOptions['public'] = useRuntimeConfig().public.authPkce as ModuleOptions['public']
+  const authConfig = moduleConfig.entra
 
   const tenantId: string = authConfig.tenantId as string
   const clientId: string = authConfig.clientId as string

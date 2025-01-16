@@ -3,10 +3,12 @@ import { defineNuxtModule, addPlugin, createResolver, addImports, addComponentsD
 // Module options TypeScript interface definition
 export interface ModuleOptions {
   public: {
-    tenantId: string
-    clientId: string
-    scopes?: string[]
-    redirectUri?: string
+    entra: {
+      tenantId: string
+      clientId: string
+      scopes?: string[]
+      redirectUri?: string
+    }
   }
 }
 
@@ -21,10 +23,12 @@ export default defineNuxtModule<ModuleOptions>({
   // Default configuration options of the Nuxt module
   defaults: {
     public: {
-      tenantId: '',
-      clientId: '',
-      scopes: ['User.Read'],
-      redirectUri: '/auth/callback',
+      entra: {
+        tenantId: '',
+        clientId: '',
+        scopes: ['User.Read'],
+        redirectUri: '/auth/callback',
+      },
     },
   },
   setup(_options, _nuxt) {
