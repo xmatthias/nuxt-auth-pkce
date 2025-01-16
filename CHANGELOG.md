@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.8.3
+
+[compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.2...v0.8.3)
+
+### 🩹 Fixes
+
+- Watch not defined ([48ab7be](https://github.com/xmatthias/nuxt-auth-pkce/commit/48ab7be))
+
+### ❤️ Contributors
+
+- Matthias ([@xmatthias](http://github.com/xmatthias))
+
 ## v0.8.2
 
 [compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.1...v0.8.2)
