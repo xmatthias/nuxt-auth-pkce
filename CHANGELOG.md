@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.8.4
+
+[compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.3...v0.8.4)
+
+### 🚀 Enhancements
+
+- Add fetchAuth helpers ([791f29a](https://github.com/xmatthias/nuxt-auth-pkce/commit/791f29a))
+
+### ❤️ Contributors
+
+- Matthias ([@xmatthias](http://github.com/xmatthias))
+
 ## v0.8.3
 
 [compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.2...v0.8.3)
