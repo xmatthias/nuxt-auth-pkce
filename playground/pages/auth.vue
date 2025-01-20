@@ -1,5 +1,11 @@
 <script setup lang="ts">
-const { signIn, user } = useAuth()
+const { signIn, user, fetchAuth } = useAuth()
+
+async function onClick() {
+  const data = await fetchAuth('http://localhost:5073/api/test')
+  // const data = await fetchAuth('https://graph.microsoft.com/v1.0/me')
+  console.log(data)
+}
 </script>
 
 <template>
@@ -12,6 +18,10 @@ const { signIn, user } = useAuth()
 
       <pre>{{ user }}</pre>
       <hr>
+
+      <button @click="onClick()">
+        Request Data
+      </button>
     </div>
     <template #unauthenticated>
       <p>

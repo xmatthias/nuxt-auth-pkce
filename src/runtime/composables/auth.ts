@@ -2,8 +2,8 @@ import {
   PublicClientApplication,
   BrowserCacheLocation,
   EventType,
-  type Configuration,
   NavigationClient,
+  type Configuration,
   type NavigationOptions,
   type AuthenticationResult,
   type AccountInfo,
@@ -227,6 +227,14 @@ export function useAuth() {
       handleRedirectResponse()
     })
   }
+
+  const fetchAuth = $fetch.create({
+    onRequest: ({ options }) => {
+      // Add auth header
+      options.headers.append('Authorization', `Bearer ${user.value?.access_token}`)
+    },
+  })
+
   return {
     initializeAuth,
     user,
@@ -236,5 +244,6 @@ export function useAuth() {
     signOut,
     getTokenSilent,
     handleRedirectResponse,
+    fetchAuth,
   }
 }

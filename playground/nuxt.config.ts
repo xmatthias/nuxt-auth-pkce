@@ -5,8 +5,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-01-10',
   authPkce: {
     public: {
-      clientId: 'your-client',
-      tenantId: 'your-tenant-id',
+      entra: {
+        clientId: 'your-client',
+        tenantId: 'your-tenant-id',
+      },
     },
   },
 })

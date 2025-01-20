@@ -12,4 +12,12 @@ export default defineNuxtPlugin((_nuxtApp) => {
   }, {
     global: true,
   })
+
+  const { fetchAuth } = useAuth()
+
+  return {
+    provide: {
+      fetchAuth,
+    },
+  }
 })

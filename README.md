@@ -71,9 +71,9 @@ NUXT_PUBLIC_AUTH_PKCE_TENANT_ID="your-tenant-id"
 ## Features
 
 <!-- Highlight some of the features your module provide here -->
-- ⛰ &nbsp;Foo
-- 🚠 &nbsp;Bar
-- 🌲 &nbsp;Baz
+- Builtin MSAL Authentication using PKCE flow
+- fetchAuth helper for authenticated requests
+- $fetchAuth method for authenticated requests
 
 ## Quick Setup
 
