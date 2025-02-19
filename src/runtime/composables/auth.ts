@@ -49,7 +49,7 @@ export function useAuth() {
 
   const tenantId: string = authConfig.tenantId as string
   const clientId: string = authConfig.clientId as string
-  const scopes = [`${clientId}/access_as_user`, ...(authConfig.scopes || [])]
+  const scopes = [...(authConfig.scopes || [])]
 
   function setupTokenExpirationTimer() {
     const accounts = msalInstance.getAllAccounts()
