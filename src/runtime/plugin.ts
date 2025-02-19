@@ -1,5 +1,5 @@
 import { useAuth } from './composables/auth'
-import { addRouteMiddleware, defineNuxtPlugin } from '#app'
+import { addRouteMiddleware, defineNuxtPlugin, navigateTo } from '#app'
 
 export default defineNuxtPlugin((_nuxtApp) => {
   addRouteMiddleware('auth', async (to) => {
