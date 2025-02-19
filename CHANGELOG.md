@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v0.8.5
+
+[compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.4...v0.8.5)
+
+### 🩹 Fixes
+
+- Don't force access_as_user scope ([3cd0616](https://github.com/xmatthias/nuxt-auth-pkce/commit/3cd0616))
+- Ensure #code is removed ([ab0eca1](https://github.com/xmatthias/nuxt-auth-pkce/commit/ab0eca1))
+
+### 🏡 Chore
+
+- Bump corepack ([b7f33b9](https://github.com/xmatthias/nuxt-auth-pkce/commit/b7f33b9))
+
+### ❤️ Contributors
+
+- Matthias ([@xmatthias](http://github.com/xmatthias))
+
 ## v0.8.4
 
 [compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.3...v0.8.4)
