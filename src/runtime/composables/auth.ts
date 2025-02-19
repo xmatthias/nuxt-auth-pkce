@@ -116,7 +116,6 @@ export function useAuth() {
     const accessToken = await getTokenSilent()
     const isAuthenticated_ = isAuthenticated && accessToken
     if (isAuthenticated_) {
-      // console.log('Authenticated')
       await setUser()
     }
     else {

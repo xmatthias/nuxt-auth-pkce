@@ -9,6 +9,10 @@ export default defineNuxtPlugin((_nuxtApp) => {
       const { handleRedirectResponse } = useAuth()
       await handleRedirectResponse()
     }
+    if (to.hash.startsWith('#code')) {
+      // If #code wasn't removed by MSAL, do this ourselfs.
+      return navigateTo(to.path)
+    }
   }, {
     global: true,
   })
