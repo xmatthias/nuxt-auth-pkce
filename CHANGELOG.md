@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.8.6
+
+[compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.5...v0.8.6)
+
+### 🩹 Fixes
+
+- Add navigateTo import ([fa3fa73](https://github.com/xmatthias/nuxt-auth-pkce/commit/fa3fa73))
+
+### ❤️ Contributors
+
+- Matthias ([@xmatthias](http://github.com/xmatthias))
+
 ## v0.8.5
 
 [compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.4...v0.8.5)
