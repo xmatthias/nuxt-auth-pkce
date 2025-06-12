@@ -42,5 +42,12 @@ export default defineNuxtModule<ModuleOptions>({
     addImports({ name: 'useAuth', from: resolver.resolve('./runtime/composables/auth') })
 
     addComponentsDir({ path: resolver.resolve('./runtime/components') })
+
+    // Ensure proper Vite optimization
+    _nuxt.options.vite.optimizeDeps ||= {}
+    _nuxt.options.vite.optimizeDeps.include ||= []
+    if (!_nuxt.options.vite.optimizeDeps.include.includes('@azure/msal-browser')) {
+      _nuxt.options.vite.optimizeDeps.include.push('@azure/msal-browser')
+    }
   },
 })
