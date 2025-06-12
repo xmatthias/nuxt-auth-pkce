@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v0.8.7
+
+[compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.6...v0.8.7)
+
+### 🩹 Fixes
+
+- Add opitmizeDeps for msalbrowser ([deeaf93](https://github.com/xmatthias/nuxt-auth-pkce/commit/deeaf93))
+
+### 🏡 Chore
+
+- Minor fixes to readme.md ([a5feb75](https://github.com/xmatthias/nuxt-auth-pkce/commit/a5feb75))
+
+### ❤️ Contributors
+
+- Matthias <xmatthias@outlook.com>
+
 ## v0.8.6
 
 [compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.5...v0.8.6)
