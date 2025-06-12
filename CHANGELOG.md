@@ -1,6 +1,10 @@
 # Changelog
 
 
+## v0.8.8
+
+[compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.7...v0.8.8)
+
 ## v0.8.7
 
 [compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.6...v0.8.7)
