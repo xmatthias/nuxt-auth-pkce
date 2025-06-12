@@ -25,6 +25,8 @@ My new Nuxt module for doing amazing things.
 npm install nuxt-auth-pkce
 # or
 yarn add nuxt-auth-pkce
+# or
+pnpm i nuxt-auth-pkce
 ```
 
 2. Add `nuxt-auth-pkce` to the `modules` section of `nuxt.config.js`:
@@ -65,7 +67,7 @@ NUXT_PUBLIC_AUTH_PKCE_TENANT_ID="your-tenant-id"
 
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
-<!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/nuxt-auth-pkce?file=playground%2Fapp.vue) -->
+<!-- - [🏀 Online playground](https://stackblitz.com/github/xmatthias/nuxt-auth-pkce?file=playground%2Fapp.vue) -->
 <!-- - [📖 &nbsp;Documentation](https://example.com) -->
 
 ## Features
