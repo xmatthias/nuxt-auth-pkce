@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.8.9
+
+[compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.8...v0.8.9)
+
+### 🩹 Fixes
+
+- Properly use vite optimizeDeps ([cec45ef](https://github.com/xmatthias/nuxt-auth-pkce/commit/cec45ef))
+
+### ❤️ Contributors
+
+- Matthias <xmatthias@outlook.com>
+
 ## v0.8.8
 
 [compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.7...v0.8.8)
