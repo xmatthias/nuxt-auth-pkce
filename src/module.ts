@@ -46,8 +46,8 @@ export default defineNuxtModule<ModuleOptions>({
     // Ensure proper Vite optimization
     _nuxt.options.vite.optimizeDeps ||= {}
     _nuxt.options.vite.optimizeDeps.include ||= []
-    if (!_nuxt.options.vite.optimizeDeps.include.includes('@azure/msal-browser')) {
-      _nuxt.options.vite.optimizeDeps.include.push('@azure/msal-browser')
+    if (!_nuxt.options.vite.optimizeDeps.include.includes('nuxt-auth-pkce > @azure/msal-browser')) {
+      _nuxt.options.vite.optimizeDeps.include.push('nuxt-auth-pkce > @azure/msal-browser')
     }
   },
 })
