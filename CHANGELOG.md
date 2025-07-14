@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.8.10
+
+[compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.9...v0.8.10)
+
+### 🩹 Fixes
+
+- Auth header should be set, not appended ([f6a867b](https://github.com/xmatthias/nuxt-auth-pkce/commit/f6a867b))
+
+### ❤️ Contributors
+
+- Matthias <xmatthias@outlook.com>
+
 ## v0.8.9
 
 [compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.8...v0.8.9)

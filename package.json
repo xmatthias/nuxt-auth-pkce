@@ -1,6 +1,6 @@
 {
   "name": "nuxt-auth-pkce",
-  "version": "0.8.9",
+  "version": "0.8.10",
   "description": "Nuxt Auth PKCE module (No requirement for SSR)",
   "repository": "xmatthias/nuxt-auth-pkce",
   "license": "MIT",
