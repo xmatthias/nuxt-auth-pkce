@@ -230,7 +230,7 @@ export function useAuth() {
   const fetchAuth = $fetch.create({
     onRequest: ({ options }) => {
       // Add auth header
-      options.headers.append('Authorization', `Bearer ${user.value?.access_token}`)
+      options.headers.set('Authorization', `Bearer ${user.value?.access_token}`)
     },
   })
 
