@@ -34,7 +34,6 @@ class CustomNavigationClient extends NavigationClient {
 }
 
 export const user = ref<User | null>(null)
-const isAuthenticated = ref<boolean | null>(null)
 const initialized = ref(false)
 let msalInstance: PublicClientApplication
 
@@ -50,6 +49,10 @@ export function useAuth() {
   const tenantId: string = authConfig.tenantId as string
   const clientId: string = authConfig.clientId as string
   const scopes = [...(authConfig.scopes || [])]
+
+  const isAuthenticated = computed<boolean>(() => {
+    return !!user.value && !!user.value.access_token
+  })
 
   function setupTokenExpirationTimer() {
     const accounts = msalInstance.getAllAccounts()
@@ -99,7 +102,6 @@ export function useAuth() {
   async function setUser() {
     const accounts = getAccounts()
     if (accounts.length === 0) {
-      isAuthenticated.value = false
       return
     }
     const account = accounts[0]
@@ -109,7 +111,6 @@ export function useAuth() {
       name: account.name ?? '',
       roles: account.idTokenClaims?.roles || [],
     }
-    isAuthenticated.value = true
   }
 
   async function handleRedirectResponse() {
@@ -117,9 +118,6 @@ export function useAuth() {
     const isAuthenticated_ = isAuthenticated && accessToken
     if (isAuthenticated_) {
       await setUser()
-    }
-    else {
-      isAuthenticated.value = false
     }
   }
 
@@ -175,7 +173,6 @@ export function useAuth() {
           scopes,
         })
         credentials = response
-        isAuthenticated.value = true
         return credentials.accessToken
       }
       catch (err) {
