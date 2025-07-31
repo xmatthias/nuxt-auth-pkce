@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.8.11
+
+[compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.10...v0.8.11)
+
+### 🩹 Fixes
+
+- IsAuthenticated should only return true if we have a valid access token ([d14215a](https://github.com/xmatthias/nuxt-auth-pkce/commit/d14215a))
+
+### ❤️ Contributors
+
+- Matthias <xmatthias@outlook.com>
+
 ## v0.8.10
 
 [compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.9...v0.8.10)
