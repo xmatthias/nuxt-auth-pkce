@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.8.12
+
+[compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.11...v0.8.12)
+
+### 🩹 Fixes
+
+- Computed not defined in module ([30b3f0f](https://github.com/xmatthias/nuxt-auth-pkce/commit/30b3f0f))
+
+### ❤️ Contributors
+
+- Matthias <xmatthias@outlook.com>
+
 ## v0.8.11
 
 [compare changes](https://github.com/xmatthias/nuxt-auth-pkce/compare/v0.8.10...v0.8.11)
