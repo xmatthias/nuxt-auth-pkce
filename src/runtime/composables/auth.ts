@@ -9,7 +9,7 @@ import {
   type AccountInfo,
 } from '@azure/msal-browser'
 import type { Router } from 'vue-router'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import type { User } from '../types/user'
 import { useRouter, useRuntimeConfig } from '#app'
 import type { ModuleOptions } from '~/src/module'
