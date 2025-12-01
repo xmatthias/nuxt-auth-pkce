@@ -167,9 +167,8 @@ export function useAuth() {
     if (!force && credentials?.expiresOn && credentials.expiresOn > new Date())
       return credentials.accessToken
 
-    const accounts = msalInstance.getAllAccounts()
-    if (accounts.length > 0) {
-      const account = accounts[0]
+    const account = msalInstance.getActiveAccount() ?? msalInstance.getAllAccounts()[0]
+    if (account) {
       msalInstance.setActiveAccount(account)
       try {
         const response = await msalInstance.acquireTokenSilent({
@@ -179,8 +178,11 @@ export function useAuth() {
         credentials = response
         return credentials.accessToken
       }
-      catch (err) {
+      catch (err: unknown) {
         console.error('Token silent error:', err)
+        if (err instanceof InteractionRequiredAuthError)
+          await msalInstance.loginRedirect({ scopes })
+
         return null
       }
     }
@@ -229,9 +231,10 @@ export function useAuth() {
   }
 
   const fetchAuth = $fetch.create({
-    onRequest: ({ options }) => {
-      // Add auth header
-      options.headers.set('Authorization', `Bearer ${user.value?.access_token}`)
+    async onRequest({ options }) {
+      const token = await getTokenSilent()
+      if (token)
+        options.headers.set('Authorization', `Bearer ${token}`)
     },
   })
 
