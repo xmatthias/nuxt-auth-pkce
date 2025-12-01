@@ -3,6 +3,7 @@ import {
   BrowserCacheLocation,
   EventType,
   NavigationClient,
+  InteractionRequiredAuthError,
   type Configuration,
   type NavigationOptions,
   type AuthenticationResult,
@@ -84,9 +85,12 @@ export function useAuth() {
 
       setupTokenExpirationTimer()
     }
-    catch (err) {
+    catch (err: unknown) {
       console.error('Token refresh error:', err)
-      signOut(account.homeAccountId)
+      if (err instanceof InteractionRequiredAuthError)
+        return msalInstance.loginRedirect({ scopes })
+
+      await signOut(account.homeAccountId)
     }
   }
 
