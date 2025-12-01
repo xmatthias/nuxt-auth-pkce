@@ -7,13 +7,22 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types.d.ts",
+      "types": "./dist/types.d.mts",
       "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
+      "require": "./dist/module.mjs"
     }
   },
-  "main": "./dist/module.cjs",
-  "types": "./dist/types.d.ts",
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "dist/index.d.mts"
+      ],
+      "some-subpath": [
+        "dist/some-subpath.d.mts"
+      ]
+    }
+  },
   "files": [
     "dist"
   ],
