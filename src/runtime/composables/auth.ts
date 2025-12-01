@@ -56,9 +56,8 @@ export function useAuth() {
   })
 
   function setupTokenExpirationTimer() {
-    const accounts = msalInstance.getAllAccounts()
-    if (accounts.length > 0) {
-      const account = accounts[0]
+    const account = msalInstance.getActiveAccount() ?? msalInstance.getAllAccounts()[0]
+    if (account) {
       if (account.idTokenClaims && account.idTokenClaims.exp) {
         const tokenExpirationTime = account.idTokenClaims.exp * 1000
         const currentTime = Date.now()
@@ -88,40 +87,35 @@ export function useAuth() {
     catch (err: unknown) {
       console.error('Token refresh error:', err)
       if (err instanceof InteractionRequiredAuthError)
-        return msalInstance.loginRedirect({ scopes })
+        return msalInstance.acquireTokenRedirect ({ scopes })
 
       await signOut(account.homeAccountId)
     }
   }
 
-  function handleResponse(resp: AuthenticationResult | null) {
-    if (resp?.account)
-      setupTokenExpirationTimer()
-    else {
-      setupTokenExpirationTimer()
-      getTokenSilent(true)
-    }
+  async function handleResponse(resp: AuthenticationResult | null) {
+    const account = resp?.account ?? msalInstance.getActiveAccount() ?? getAccounts()[0]
+    if (!account)
+      return
+
+    msalInstance.setActiveAccount(account)
+    await setUser(account)
+    setupTokenExpirationTimer()
   }
 
-  async function setUser() {
-    const accounts = getAccounts()
-    if (accounts.length === 0) {
+  async function setUser(account?: AccountInfo) {
+    const targetAccount = account ?? getAccounts()[0]
+    if (!targetAccount)
       return
-    }
-    const account = accounts[0]
+
+    msalInstance.setActiveAccount(targetAccount)
+    await getTokenSilent(true)
+
     user.value = {
       access_token: credentials?.accessToken ?? '',
-      username: account.username ?? '',
-      name: account.name ?? '',
-      roles: account.idTokenClaims?.roles || [],
-    }
-  }
-
-  async function handleRedirectResponse() {
-    const accessToken = await getTokenSilent()
-    const isAuthenticated_ = isAuthenticated && accessToken
-    if (isAuthenticated_) {
-      await setUser()
+      username: targetAccount.username ?? '',
+      name: targetAccount.name ?? '',
+      roles: targetAccount.idTokenClaims?.roles || [],
     }
   }
 
@@ -150,12 +144,10 @@ export function useAuth() {
     msalInstance = new PublicClientApplication(msalConfig)
     await msalInstance.initialize()
 
-    await msalInstance
-      .handleRedirectPromise()
-      .then(handleResponse)
-      .catch((err) => {
-        throw new Error(err)
-      })
+    const redirectResponse = await msalInstance.handleRedirectPromise().catch((err) => {
+      throw new Error(err)
+    })
+    await handleResponse(redirectResponse)
 
     msalInstance.addEventCallback((event) => {
       if (event.eventType === EventType.LOGIN_SUCCESS)
@@ -225,8 +217,8 @@ export function useAuth() {
   // Initialize the auth instance asynchonously
   if (!initialized.value) {
     initialized.value = true
-    initializeAuth().then(() => {
-      handleRedirectResponse()
+    initializeAuth().then(async () => {
+      await setUser()
     })
   }
 
@@ -246,7 +238,7 @@ export function useAuth() {
     isAuthenticated,
     signOut,
     getTokenSilent,
-    handleRedirectResponse,
+    handleRedirectResponse: setUser,
     fetchAuth,
   }
 }
