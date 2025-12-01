@@ -33,7 +33,7 @@
     "@azure/msal-browser": "^3.28.0"
   },
   "dependencies": {
-    "@azure/msal-browser": "^3.28.0",
+    "@azure/msal-browser": "^4.26.2",
     "@nuxt/kit": "^4.2.1",
     "defu": "6.1.4"
   },
