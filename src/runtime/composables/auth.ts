@@ -56,6 +56,9 @@ export function useAuth() {
   })
 
   function setupTokenExpirationTimer() {
+    if (!authConfig.usePeriodicTokenRefresh)
+      // Don't periodically refresh the token unless configured to do so
+      return
     const account = msalInstance.getActiveAccount() ?? msalInstance.getAllAccounts()[0]
     if (account) {
       if (account.idTokenClaims && account.idTokenClaims.exp) {
