@@ -15,8 +15,8 @@ export default defineNuxtPlugin((_nuxtApp) => {
     if (to.hash.startsWith('#code')) {
       // Only run if we're returning from the OAuth redirect
 
-      const { handleRedirectResponse } = useAuth()
-      await handleRedirectResponse()
+      // Ensure MSAL is initialized - this will process the redirect response automatically
+      useAuth()
     }
     if (to.hash.startsWith('#code')) {
       // If #code wasn't removed by MSAL, do this ourselfs.

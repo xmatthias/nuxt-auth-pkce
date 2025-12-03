@@ -51,7 +51,9 @@ export function useAuth() {
   const clientId: string = authConfig.clientId as string
   const scopes = [...(authConfig.scopes || [])]
 
-  const isAuthenticated = computed<boolean>(() => {
+  const isAuthenticated = computed<boolean | null>(() => {
+    if (!initialized.value)
+      return null
     return !!user.value && !!user.value.access_token
   })
 
@@ -97,6 +99,7 @@ export function useAuth() {
   }
 
   async function handleResponse(resp: AuthenticationResult | null) {
+    initialized.value = true
     const account = resp?.account ?? msalInstance.getActiveAccount() ?? getAccounts()[0]
     if (!account)
       return
@@ -107,7 +110,7 @@ export function useAuth() {
   }
 
   async function setUser(account?: AccountInfo) {
-    const targetAccount = account ?? getAccounts()[0]
+    const targetAccount = account ?? msalInstance.getActiveAccount() ?? getAccounts()[0]
     if (!targetAccount)
       return
 
@@ -219,7 +222,6 @@ export function useAuth() {
 
   // Initialize the auth instance asynchonously
   if (!initialized.value) {
-    initialized.value = true
     initializeAuth().then(async () => {
       await setUser()
     })
@@ -235,6 +237,7 @@ export function useAuth() {
 
   return {
     initializeAuth,
+    initialized,
     user,
     signIn,
     getAccounts,
