@@ -52,8 +52,9 @@ export function useAuth() {
   const scopes = [...(authConfig.scopes || [])]
 
   const isAuthenticated = computed<boolean | null>(() => {
-    if (!initialized.value)
+    if (!initialized.value) {
       return null
+    }
     return !!user.value && !!user.value.access_token
   })
 
@@ -99,13 +100,14 @@ export function useAuth() {
   }
 
   async function handleResponse(resp: AuthenticationResult | null) {
-    initialized.value = true
     const account = resp?.account ?? msalInstance.getActiveAccount() ?? getAccounts()[0]
-    if (!account)
+    if (!account) {
+      initialized.value = true
       return
-
+    }
     msalInstance.setActiveAccount(account)
     await setUser(account)
+    initialized.value = true
     setupTokenExpirationTimer()
   }
 
@@ -179,7 +181,7 @@ export function useAuth() {
       catch (err: unknown) {
         console.error('Token silent error:', err)
         if (err instanceof InteractionRequiredAuthError)
-          await msalInstance.loginRedirect({ scopes })
+          await msalInstance.acquireTokenRedirect({ scopes })
 
         return null
       }
